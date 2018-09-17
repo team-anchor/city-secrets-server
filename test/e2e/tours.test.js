@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const { Types } = require('mongoose');
-const { request, save } = require('./request');
+const { request, save, checkOk } = require('./request');
 const { dropCollection } = require('./db');
 
 const makeSimple = tour => {
@@ -76,6 +76,15 @@ describe('Tours API', () => {
             .get('/api/tours')
             .then(({ body }) => {
                 assert.deepEqual(body, [makeSimple(muralTour), makeSimple(jogTour)]);
+            });
+    });
+
+    it('gets a single tour by id', () => {
+        return request
+            .get(`/api/tours/${muralTour._id}`)
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.deepEqual(body, muralTour);
             });
     });
 });
