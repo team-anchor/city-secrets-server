@@ -1,2 +1,7 @@
-# city-secrets-server
-A photo-driven app for exploring little-known features of cities you live in/visit.
+Readme Here!
+=====
+
+## Get Started
+1. First step
+1. Second step
+...and so on.
