@@ -8,12 +8,12 @@ const app = require('../../lib/app');
 const server = createServer(app);
 const request = chai.request(server).keepOpen();
 
-request.checkOk = res => {
+const checkOk = res => {
     assert.equal(res.status, 200, 'Expected 200 http status code');
     return res;
 };
 
-request.getToken = () => request
+const getToken = () => request
     .post('/api/auth/signup')
     .send({
         email: 'me@me.com',
@@ -21,6 +21,20 @@ request.getToken = () => request
     })
     .then(({ body }) => body.token);
 
+const save = (path, data, token = null) => {
+    return request
+        .post(`/api/${path}`)
+        .set('Authorization', token)
+        .send(data)
+        .then(checkOk)
+        .then(({ body }) => body);
+};
+
 after(done => server.close(done));
 
-module.exports = request;
+module.exports = {
+    request,
+    save,
+    checkOk,
+    getToken
+};

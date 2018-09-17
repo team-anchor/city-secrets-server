@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const request = require('./request');
+const { request } = require('./request');
 const { dropCollection } = require('./db');
 const { checkOk } = request;
 
@@ -7,7 +7,6 @@ describe ('Users API', () => {
 
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
-    // beforeEach(() => dropCollection('tours'));
 
     let token;
     beforeEach(() => {
@@ -41,8 +40,8 @@ describe ('Users API', () => {
     beforeEach(() => {
         return saveUser({
             name: 'Joe Walker',  
-            location: 'Portland',
-            email: 'me@me.com'
+            email: 'email@example.org',
+            location: 'Portland'
         })
             .then(data => {
                 joe = data;

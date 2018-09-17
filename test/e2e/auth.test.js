@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const request = require('./request');
+const { request } = require('./request');
 const { dropCollection } = require('./db');
 
 const { checkOk } = request;
@@ -7,6 +7,7 @@ const { checkOk } = request;
 describe('Auth API', () => {
 
     beforeEach(() => dropCollection('auths'));
+    beforeEach(() => dropCollection('users'));
 
     let token;
     beforeEach(() => {
