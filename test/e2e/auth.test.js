@@ -7,6 +7,7 @@ const { checkOk } = request;
 describe('Auth API', () => {
 
     beforeEach(() => dropCollection('auths'));
+    beforeEach(() => dropCollection('users'));
 
     let token;
     beforeEach(() => {

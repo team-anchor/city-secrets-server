@@ -6,7 +6,7 @@ const { checkOk } = request;
 describe ('Users API', () => {
 
     beforeEach(() => dropCollection('users'));
-    beforeEach(() => dropCollection('tours'));
+    beforeEach(() => dropCollection('auths'));
 
     let token;
     beforeEach(() => {
@@ -38,7 +38,8 @@ describe ('Users API', () => {
     beforeEach(() => {
         return saveUser({
             name: 'Joe Walker',  
-            email: 'email@example.org'
+            email: 'email@example.org',
+            location: 'Portland'
         })
             .then(data => {
                 joe = data;
