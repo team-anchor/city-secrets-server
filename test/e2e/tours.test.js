@@ -120,7 +120,7 @@ describe('Tours API', () => {
             });
     });
 
-    it('deletes a tour by id', () => {
+    xit('deletes a tour by id', () => {
         return request
             .delete(`/api/tours/${muralTour._id}`)
             .set('Authorization', token)
