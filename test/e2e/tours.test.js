@@ -3,6 +3,16 @@ const { Types } = require('mongoose');
 const { request, save } = require('./request');
 const { dropCollection } = require('./db');
 
+const makeSimple = tour => {
+    const simple = {
+        _id: tour._id,
+        name: tour.name,
+        description: tour.description,
+        userId: tour.userId
+    };
+    return simple;
+};
+
 let muralTour, jogTour;
 
 const mural = {
@@ -65,7 +75,7 @@ describe('Tours API', () => {
         return request
             .get('/api/tours')
             .then(({ body }) => {
-                assert.deepEqual(body, [muralTour, jogTour]);
+                assert.deepEqual(body, [makeSimple(muralTour), makeSimple(jogTour)]);
             });
     });
 });
