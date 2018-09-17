@@ -21,11 +21,12 @@ const getToken = () => request
     })
     .then(({ body }) => body.token);
 
-const save = (path, data) => {
+const save = (path, data, token = null) => {
     return request
         .post(`/api/${path}`)
+        .set('Authorization', token)
         .send(data)
-        .then(request.checkOk)
+        .then(checkOk)
         .then(({ body }) => body);
 };
 

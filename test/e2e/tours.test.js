@@ -59,12 +59,29 @@ const jog = {
     ]
 };
 
-describe('Tours API', () => {
-    beforeEach(() => dropCollection('tours'));
-    beforeEach(() => dropCollection('users'));
+const guide = {
+    email: 'guide@test.com',
+    password: 'abc'
+};
 
-    beforeEach(() => save('tours', mural).then(data => muralTour = data));
-    beforeEach(() => save('tours', jog).then(data => jogTour = data));
+describe('Tours API', () => {
+    let token;
+
+    beforeEach(() => dropCollection('tours'));
+    beforeEach(() => dropCollection('auths'));
+
+    beforeEach(() => {
+        return request
+            .post('/api/auth/signup')
+            .send(guide)
+            .then(checkOk)
+            .then(({ body }) => {
+                token = body.token;
+            });
+    });
+
+    beforeEach(() => save('tours', mural, token).then(data => muralTour = data));
+    beforeEach(() => save('tours', jog, token).then(data => jogTour = data));
 
     it('saves a tour to the database', () => {
         assert.isOk(muralTour._id);
@@ -74,6 +91,7 @@ describe('Tours API', () => {
     it('gets all tours from the database', () => {
         return request
             .get('/api/tours')
+            .set('Authorization', token)
             .then(({ body }) => {
                 assert.deepEqual(body, [makeSimple(muralTour), makeSimple(jogTour)]);
             });
@@ -82,10 +100,23 @@ describe('Tours API', () => {
     it('gets a single tour by id', () => {
         return request
             .get(`/api/tours/${muralTour._id}`)
+            .set('Authorization', token)
             .then(checkOk)
             .then(({ body }) => {
                 delete muralTour.__v;
                 assert.deepEqual(body, muralTour);
+            });
+    });
+
+    it('updates a tour by id', () => {
+        jogTour.name = 'Portland jogging';
+        return request
+            .put(`/api/tours/${jogTour._id}`)
+            .set('Authorization', token)
+            .send(jogTour)
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.equal(body.name, 'Portland jogging');
             });
     });
 });
