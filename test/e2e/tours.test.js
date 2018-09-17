@@ -48,6 +48,7 @@ const jog = {
         }
     ]
 };
+
 describe('Tours API', () => {
     beforeEach(() => dropCollection('tours'));
     beforeEach(() => dropCollection('users'));
