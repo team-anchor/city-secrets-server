@@ -84,6 +84,7 @@ describe('Tours API', () => {
             .get(`/api/tours/${muralTour._id}`)
             .then(checkOk)
             .then(({ body }) => {
+                delete muralTour.__v;
                 assert.deepEqual(body, muralTour);
             });
     });
