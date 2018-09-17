@@ -119,4 +119,21 @@ describe('Tours API', () => {
                 assert.equal(body.name, 'Portland jogging');
             });
     });
+
+    it('deletes a tour by id', () => {
+        return request
+            .delete(`/api/tours/${muralTour._id}`)
+            .set('Authorization', token)
+            .then(checkOk)
+            .then(res => {
+                assert.deepEqual(res.body, { removed: true });
+                return request.get('/api/tours');
+            })
+            .then(checkOk)
+            .then(({ body }) => {
+                delete jogTour.__v;
+                assert.equal(body.length, 1);
+                assert.deepEqual(body[0], jogTour);
+            });
+    });
 });
