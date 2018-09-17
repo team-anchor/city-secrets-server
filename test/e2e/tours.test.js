@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const { Types } = require('mongoose');
-const { save } = require('./request');
+const { request, save } = require('./request');
 const { dropCollection } = require('./db');
 
 let muralTour, jogTour;
@@ -59,5 +59,13 @@ describe('Tours API', () => {
     it('saves a tour to the database', () => {
         assert.isOk(muralTour._id);
         assert.isOk(jogTour._id);
+    });
+
+    it('gets all tours from the database', () => {
+        return request
+            .get('/api/tours')
+            .then(({ body }) => {
+                assert.deepEqual(body, [muralTour, jogTour]);
+            });
     });
 });
