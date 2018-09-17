@@ -6,7 +6,7 @@ const { checkOk } = request;
 
 describe('Auth API', () => {
 
-    beforeEach(() => dropCollection('profiles'));
+    beforeEach(() => dropCollection('auths'));
 
     let token;
     beforeEach(() => {
@@ -24,5 +24,18 @@ describe('Auth API', () => {
 
     it('Signs up a user', () => {
         assert.isDefined(token);
+    });
+
+    it('Verifies a token', () => {
+        return request
+            .post('/api/auth/signin')
+            .send({
+                email: 'me@me.com',
+                password: '123'
+            })
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.isDefined(body.token);
+            });
     });
 });
