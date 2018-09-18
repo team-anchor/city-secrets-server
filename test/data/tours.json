@@ -1,0 +1,54 @@
+{
+  "_id" : "5ba1344b54882ac6d0142762",
+  "title" : "Flower Gardens",
+  "description" : "Here are some very nice flower gardens within easy walking distance of the center of downtown",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/max_2.jpg",
+  "images" : [],
+  "location" : "Portland",
+  "User_Id" : "5ba1312d54882ac6d0138f29"
+}
+{
+  "_id" : "5ba1344b54882ac6d0142763",
+  "title" : "Wall Murals",
+  "description" : "Enjoy the rapidly disappearing antique advertising murals while you still can. These are still visible on the walls of older buildings around Portland. This walk takes you past some of the best ones in Northwest",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/europe_2.jpg",
+  "images" : [],
+  "location" : "Portland",
+  "User_Id" : "5ba1312d54882ac6d0138f29"
+}
+{
+  "_id" : "5ba1344b54882ac6d0142764",
+  "title" : "Food Carts",
+  "description" : "You've heard about Portland's food carts, right? Here's a walk through downtown that will take you past the best ones NOT mobbed with tourists.",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/europe_1.jpg",
+  "images" : [],
+  "location" : "Portland",
+  "User_Id" : "5ba1312d54882ac6d0138f30"
+}
+{
+  "_id" : "5ba1344b54882ac6d0142765",
+  "title" : "Street Chess",
+  "description" : "You play chess? Are you brave enough to play in public? Take this short walk starting at Bryant Park to find some of the best drop-in street chess spots in midtown.",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/europe_1.jpg",
+  "images" : [],
+  "location" : "New York",
+  "User_Id" : "5ba1312d54882ac6d0138f32"
+}
+{
+  "_id" : "5ba1344b54882ac6d0142766",
+  "title" : "Hidden Lighthouse",
+  "description" : "Did you ever read the 'Little Red Lighthouse' book as a child? Well this lighthouse is real, and you can visit it under the George Washington Bridge. Here's an easy walking route to take you there.",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/europe_1.jpg",
+  "images" : [],
+  "location" : "New York",
+  "User_Id" : "5ba1312d54882ac6d0138f32"
+}
+{
+  "_id" : "5ba1344b54882ac6d0142767",
+  "title" : "Secret Statues",
+  "description" : "There are some elaborate statues and sculptures hidden off the beaten path in my neighborhood. Take this walking route to check them out.",
+  "featured_image" : "http://www.worldwidewalrusweb.com/bc2/europe_2.jpg",
+  "images" : [],
+  "location" : "Portland",
+  "User_Id" : "5ba1312d54882ac6d0138f30"
+}
