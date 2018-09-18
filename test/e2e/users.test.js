@@ -19,6 +19,7 @@ describe ('Users API', () => {
             .then(checkOk)
             .then(({ body }) => {
                 token = body.token;
+                console.log(token);
             });
     });
 
@@ -30,6 +31,7 @@ describe ('Users API', () => {
             .then(checkOk)
             .then(({ body }) => {
                 delete body.__v;
+                console.log(body);
                 return body;
             });
     }
@@ -43,6 +45,7 @@ describe ('Users API', () => {
         })
             .then(data => {
                 joe = data;
+                console.log(joe);
             });
 
     });
