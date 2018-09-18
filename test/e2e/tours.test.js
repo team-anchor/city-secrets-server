@@ -1,6 +1,7 @@
 const { assert } = require('chai');
-const { Types } = require('mongoose');
-const { request, save, checkOk } = require('./request');
+// const { Types } = require('mongoose');
+const tokenService = require('../../lib/auth/token-service');
+const { request, checkOk } = require('./request');
 const { dropCollection } = require('./db');
 
 const makeSimple = tour => {
@@ -14,50 +15,7 @@ const makeSimple = tour => {
 };
 
 let muralTour, jogTour;
-
-const mural = {
-    name: 'SE Murals',
-    description: 'The best murals in SE PDX',
-    userId: Types.ObjectId(),
-    stops: [
-        {
-            location: {
-                address: '1300 SE Stark St, Portland, OR 97214',
-                picture: 'https://www.randomimage.com',
-                caption: 'This is where you start the tour! Rev Hall is dope.'
-            }
-        },
-        {
-            location: {
-                address: '923 SE 7th Ave, Portland, OR 97214',
-                picture: 'https://www.randomimage.com',
-                caption: 'This is where you finish the tour! Go eat some ramen now.'
-            }
-        }
-    ]
-};
-
-const jog = {
-    name: 'SW Jogging',
-    description: 'A great jogging route that ends at a nice fountain',
-    userId: Types.ObjectId(),
-    stops: [
-        {
-            location: {
-                address: '1401 SW Naito Pkwy, Portland, OR 97201',
-                picture: 'https://www.randomimage.com',
-                caption: 'Start jogging here!'
-            }
-        },
-        {
-            location: {
-                address: '1000 SW Naito Pkwy, Portland, OR 97204',
-                picture: 'https://www.randomimage.com',
-                caption: 'End jogging here! Now you can cool off in the fountain.'
-            }
-        }
-    ]
-};
+let token, user;
 
 const guide = {
     email: 'guide@test.com',
@@ -65,8 +23,6 @@ const guide = {
 };
 
 describe('Tours API', () => {
-    let token;
-
     beforeEach(() => dropCollection('tours'));
     beforeEach(() => dropCollection('auths'));
 
@@ -77,11 +33,68 @@ describe('Tours API', () => {
             .then(checkOk)
             .then(({ body }) => {
                 token = body.token;
+                tokenService.verify(token)
+                    .then(userBody => user = userBody);
             });
     });
 
-    beforeEach(() => save('tours', mural, token).then(data => muralTour = data));
-    beforeEach(() => save('tours', jog, token).then(data => jogTour = data));
+    beforeEach(() => {
+        return request
+            .post('/api/tours')
+            .set('Authorization', token)
+            .send({
+                name: 'SE Murals',
+                description: 'The best murals in SE PDX',
+                userId: user.id,
+                stops: [
+                    {
+                        location: {
+                            address: '1300 SE Stark St, Portland, OR 97214',
+                            picture: 'https://www.randomimage.com',
+                            caption: 'This is where you start the tour! Rev Hall is dope.'
+                        }
+                    },
+                    {
+                        location: {
+                            address: '923 SE 7th Ave, Portland, OR 97214',
+                            picture: 'https://www.randomimage.com',
+                            caption: 'This is where you finish the tour! Go eat some ramen now.'
+                        }
+                    }
+                ]
+            })
+            .then(checkOk)
+            .then(({ body }) => muralTour = body);
+    });
+
+    beforeEach(() => {
+        return request
+            .post('/api/tours')
+            .set('Authorization', token)
+            .send({
+                name: 'SW Jogging',
+                description: 'A great jogging route that ends at a nice fountain',
+                userId: user.id,
+                stops: [
+                    {
+                        location: {
+                            address: '1401 SW Naito Pkwy, Portland, OR 97201',
+                            picture: 'https://www.randomimage.com',
+                            caption: 'Start jogging here!'
+                        }
+                    },
+                    {
+                        location: {
+                            address: '1000 SW Naito Pkwy, Portland, OR 97204',
+                            picture: 'https://www.randomimage.com',
+                            caption: 'End jogging here! Now you can cool off in the fountain.'
+                        }
+                    }
+                ]
+            })
+            .then(checkOk)
+            .then(({ body }) => jogTour = body);
+    });
 
     it('saves a tour to the database', () => {
         assert.isOk(muralTour._id);
@@ -120,20 +133,20 @@ describe('Tours API', () => {
             });
     });
 
-    xit('deletes a tour by id', () => {
+    it('deletes a tour by id', () => {
         return request
             .delete(`/api/tours/${muralTour._id}`)
             .set('Authorization', token)
             .then(checkOk)
             .then(res => {
                 assert.deepEqual(res.body, { removed: true });
-                return request.get('/api/tours');
-            })
-            .then(checkOk)
-            .then(({ body }) => {
-                delete jogTour.__v;
-                assert.equal(body.length, 1);
-                assert.deepEqual(body[0], jogTour);
+                return request.get('/api/tours')
+                    .set('Authorization', token)
+                    .then(({ body }) => {
+                        delete jogTour.__v;
+                        assert.equal(body.length, 1);
+                        assert.deepEqual(body[0], makeSimple(jogTour));
+                    });
             });
     });
 });
