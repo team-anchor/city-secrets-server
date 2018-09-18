@@ -25,7 +25,7 @@ let userTwoProf = {
     location: 'Portland'
 };
 
-describe('Users API', () => {
+describe.only('Users API', () => {
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
@@ -47,6 +47,28 @@ describe('Users API', () => {
             .then(checkOk)
             .then(({ body }) => {
                 assert.equal(body.length, 2);
+            });
+    });
+
+    it('gets a user by id', () => {
+        return request
+            .get(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.deepEqual(body, userOne);
+            });
+    });
+
+    it('updates a user by id', () => {
+        userOne.name = 'user One wooo';
+        return request
+            .put(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
+            .send(userOne)
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.equal(body.name, 'user One wooo');
             });
     });
 });
