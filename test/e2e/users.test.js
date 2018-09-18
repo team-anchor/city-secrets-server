@@ -1,56 +1,91 @@
 const { assert } = require('chai');
-const { request } = require('./request');
+const { request, save, saveAuth, checkOk } = require('./request');
 const { dropCollection } = require('./db');
-const { checkOk } = request;
 
-describe ('Users API', () => {
+let userOne, userTwo, tokenOne, tokenTwo;
+let userOneAuth = {
+    email: 'me@me.com',
+    password: '123'
+};
 
+let userTwoAuth = {
+    email: 'test@test.com',
+    password: '123'
+};
+
+let userOneProf = {
+    name: 'test',  
+    email: 'email@example.org',
+    location: 'Portland'
+};
+
+let userTwoProf = {
+    name: 'testtest',  
+    email: 'test@test.com',
+    location: 'Portland'
+};
+
+describe.only('Users API', () => {
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
-    let token;
-    beforeEach(() => {
+    beforeEach(() => saveAuth(userOneAuth).then(data => tokenOne = data.token));
+    beforeEach(() => saveAuth(userTwoAuth).then(data => tokenTwo = data.token));
+
+    beforeEach(() => save('users', userOneProf, tokenOne).then(data => userOne = data));
+    beforeEach(() => save('users', userTwoProf, tokenTwo).then(data => userTwo = data));
+
+    it('saves a user', () => {
+        assert.isOk(userOne._id);
+        assert.isOk(userTwo._id);
+    });
+
+    it('gets a list of users', () => {
         return request
-            .post('/api/auth/signup')
-            .send({
-                email: 'me@me.com',
-                password: '123'
-            })
+            .get('/api/users')
+            .set('Authorization', tokenOne)
             .then(checkOk)
             .then(({ body }) => {
-                token = body.token;
-                console.log(token);
+                assert.equal(body.length, 2);
             });
     });
 
-    function saveUser(user) {
+    it('gets a user by id', () => {
         return request
-            .post('/api/users')
-            .set('Authorization', token)
-            .send(user)
+            .get(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
             .then(checkOk)
             .then(({ body }) => {
-                delete body.__v;
-                console.log(body);
-                return body;
+                assert.deepEqual(body, userOne);
             });
-    }
-
-    let joe;
-    beforeEach(() => {
-        return saveUser({
-            name: 'Joe Walker',  
-            email: 'email@example.org',
-            location: 'Portland'
-        })
-            .then(data => {
-                joe = data;
-                console.log(joe);
-            });
-
     });
 
-    it('Saves a user', () => {
-        assert.isOk(joe._id);
+    it('updates a user by id', () => {
+        userOne.name = 'user One wooo';
+        return request
+            .put(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
+            .send(userOne)
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.equal(body.name, 'user One wooo');
+            });
+    });
+
+    it('deletes a user', () => {
+        return request
+            .delete(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
+            .then(checkOk)
+            .then(res => {
+                assert.deepEqual(res.body, { removed: true });
+                return request
+                    .get('/api/users')
+                    .set('Authorization', tokenTwo)
+                    .then(checkOk)
+                    .then(({ body }) => {
+                        assert.equal(body.length, 1);
+                    });
+            });
     });
 });

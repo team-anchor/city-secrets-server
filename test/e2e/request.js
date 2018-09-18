@@ -30,11 +30,20 @@ const save = (path, data, token = null) => {
         .then(({ body }) => body);
 };
 
+const saveAuth = data => {
+    return request
+        .post('/api/auth/signup')
+        .send(data)
+        .then(checkOk)
+        .then(({ body }) => body);
+};
+
 after(done => server.close(done));
 
 module.exports = {
     request,
     save,
+    saveAuth,
     checkOk,
     getToken
 };
