@@ -71,4 +71,20 @@ describe.only('Users API', () => {
                 assert.equal(body.name, 'user One wooo');
             });
     });
+
+    it('deletes a user', () => {
+        return request
+            .delete(`/api/users/${userOne._id}`)
+            .set('Authorization', tokenOne)
+            .then(checkOk)
+            .then(res => {
+                assert.deepEqual(res.body, { removed: true });
+                return request
+                    .get('/api/users');
+            })
+            .then(checkOk)
+            .then(({ body }) => {
+                assert.equal(body.length, 1);
+            });
+    });
 });
