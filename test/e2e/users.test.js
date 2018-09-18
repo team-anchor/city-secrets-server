@@ -1,56 +1,52 @@
 const { assert } = require('chai');
-const { request } = require('./request');
+const { request, save, saveAuth, checkOk } = require('./request');
 const { dropCollection } = require('./db');
-const { checkOk } = request;
 
-describe ('Users API', () => {
+let userOne, userTwo, tokenOne, tokenTwo;
+let userOneAuth = {
+    email: 'me@me.com',
+    password: '123'
+};
 
+let userTwoAuth = {
+    email: 'test@test.com',
+    password: '123'
+};
+
+let userOneProf = {
+    name: 'test',  
+    email: 'email@example.org',
+    location: 'Portland'
+};
+
+let userTwoProf = {
+    name: 'testtest',  
+    email: 'test@test.com',
+    location: 'Portland'
+};
+
+describe('Users API', () => {
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
-    let token;
-    beforeEach(() => {
-        return request
-            .post('/api/auth/signup')
-            .send({
-                email: 'me@me.com',
-                password: '123'
-            })
-            .then(checkOk)
-            .then(({ body }) => {
-                token = body.token;
-                console.log(token);
-            });
+    beforeEach(() => saveAuth(userOneAuth).then(data => tokenOne = data.token));
+    beforeEach(() => saveAuth(userTwoAuth).then(data => tokenTwo = data.token));
+
+    beforeEach(() => save('users', userOneProf, tokenOne).then(data => userOne = data));
+    beforeEach(() => save('users', userTwoProf, tokenTwo).then(data => userTwo = data));
+
+    it('saves a user', () => {
+        assert.isOk(userOne._id);
+        assert.isOk(userTwo._id);
     });
 
-    function saveUser(user) {
+    it('gets a list of users', () => {
         return request
-            .post('/api/users')
-            .set('Authorization', token)
-            .send(user)
+            .get('/api/users')
+            .set('Authorization', tokenOne)
             .then(checkOk)
             .then(({ body }) => {
-                delete body.__v;
-                console.log(body);
-                return body;
+                assert.equal(body.length, 2);
             });
-    }
-
-    let joe;
-    beforeEach(() => {
-        return saveUser({
-            name: 'Joe Walker',  
-            email: 'email@example.org',
-            location: 'Portland'
-        })
-            .then(data => {
-                joe = data;
-                console.log(joe);
-            });
-
-    });
-
-    it('Saves a user', () => {
-        assert.isOk(joe._id);
     });
 });
