@@ -140,7 +140,8 @@ describe('Tours API', () => {
             .then(checkOk)
             .then(res => {
                 assert.deepEqual(res.body, { removed: true });
-                return request.get('/api/tours')
+                return request
+                    .get('/api/tours')
                     .set('Authorization', token)
                     .then(({ body }) => {
                         delete jogTour.__v;

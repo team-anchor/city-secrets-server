@@ -80,11 +80,12 @@ describe.only('Users API', () => {
             .then(res => {
                 assert.deepEqual(res.body, { removed: true });
                 return request
-                    .get('/api/users');
-            })
-            .then(checkOk)
-            .then(({ body }) => {
-                assert.equal(body.length, 1);
+                    .get('/api/users')
+                    .set('Authorization', tokenTwo)
+                    .then(checkOk)
+                    .then(({ body }) => {
+                        assert.equal(body.length, 1);
+                    });
             });
     });
 });
