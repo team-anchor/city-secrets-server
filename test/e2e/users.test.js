@@ -25,7 +25,7 @@ let userTwoProf = {
     location: 'Portland'
 };
 
-describe.only('Users API', () => {
+describe('Users API', () => {
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
