@@ -4,27 +4,30 @@ const { dropCollection } = require('./db');
 
 const { checkOk } = request;
 
-describe('Auth API', () => {
+describe.only('Auth API', () => {
+    let token, user;
 
     beforeEach(() => dropCollection('auths'));
     beforeEach(() => dropCollection('users'));
 
-    let token;
     beforeEach(() => {
         return request
             .post('/api/auth/signup')
             .send({
+                name: 'tester',
                 email: 'me@me.com',
                 password: '123'
             })
             .then(checkOk)
             .then(({ body }) => {
                 token = body.token;
+                user = body.user;
             });
     });
 
     it('Signs up a user', () => {
-        assert.isDefined(token);
+        assert.ok(token);
+        assert.equal(user.name, 'tester');
     });
 
     it('Verifies a token', () => {
