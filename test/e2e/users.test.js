@@ -1,39 +1,32 @@
 const { assert } = require('chai');
-const { request, save, saveAuth, checkOk } = require('./request');
+const { request, saveAuth, checkOk } = require('./request');
 const { dropCollection } = require('./db');
 
 let userOne, userTwo, tokenOne, tokenTwo;
 let userOneAuth = {
+    name: 'test',
     email: 'me@me.com',
     password: '123'
 };
 
 let userTwoAuth = {
+    name: 'testtest',
     email: 'test@test.com',
     password: '123'
-};
-
-let userOneProf = {
-    name: 'test',  
-    email: 'email@example.org',
-    location: 'Portland'
-};
-
-let userTwoProf = {
-    name: 'testtest',  
-    email: 'test@test.com',
-    location: 'Portland'
 };
 
 describe('Users API', () => {
     beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
-    beforeEach(() => saveAuth(userOneAuth).then(data => tokenOne = data.token));
-    beforeEach(() => saveAuth(userTwoAuth).then(data => tokenTwo = data.token));
-
-    beforeEach(() => save('users', userOneProf, tokenOne).then(data => userOne = data));
-    beforeEach(() => save('users', userTwoProf, tokenTwo).then(data => userTwo = data));
+    beforeEach(() => saveAuth(userOneAuth).then(body => {
+        tokenOne = body.token;
+        userOne = body.user;
+    }));
+    beforeEach(() => saveAuth(userTwoAuth).then(body => {
+        tokenTwo = body.token;
+        userTwo = body.user;
+    }));
 
     it('saves a user', () => {
         assert.isOk(userOne._id);
