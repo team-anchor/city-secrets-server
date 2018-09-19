@@ -18,6 +18,7 @@ let muralTour, jogTour;
 let token, user;
 
 const guide = {
+    name: 'guide',
     email: 'guide@test.com',
     password: 'abc'
 };
