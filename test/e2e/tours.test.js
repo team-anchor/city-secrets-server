@@ -47,6 +47,8 @@ describe('Tours API', () => {
             .send({
                 name: 'SE Murals',
                 description: 'The best murals in SE PDX',
+                city: 'Portland, OR',
+                tourImage: 'www.stock-image.image',
                 userId: user.id,
                 stops: [
                     {
@@ -75,6 +77,8 @@ describe('Tours API', () => {
                 name: 'SW Jogging',
                 description: 'A great jogging route that ends at a nice fountain',
                 userId: user.id,
+                city: 'Portland, OR',
+                tourImage: 'www.stock-image.image',
                 stops: [
                     {
                         address: '1401 SW Naito Pkwy, Portland, OR 97201',
