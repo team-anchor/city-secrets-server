@@ -1,66 +1,66 @@
 [
     {
         "_id": {
-            "$oid": "5ba3db212f197961c9a0b1aa"
+            "$oid": "5ba41606204d59772929873a"
         },
         "name": "SE Murals",
         "description": "The best murals in SE PDX",
-        "city": "Portland, OR",
-        "tourImage": "www.stock-image.image",
-        "userId": {
-            "$oid": "5ba3db212f197961c9a0b1a6"
+        "city": "Portland",
+        "tourimage": "www.stock-image.image",
+        "userid": {
+            "$oid": "5ba41606204d597729298736"
         },
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1ac"
+                    "$oid": "5ba41606204d59772929873c"
                 },
                 "address": "1300 SE Stark St, Portland, OR 97214",
                 "picture": "https://www.randomimage.com",
                 "caption": "This is where you start the tour! Rev Hall is dope.",
-                "tourId": "5ba3db212f197961c9a0b1a8"
+                "tourid": "5ba41606204d597729298738"
             },
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1ab"
+                    "$oid": "5ba41606204d59772929873b"
                 },
                 "address": "923 SE 7th Ave, Portland, OR 97214",
                 "picture": "https://www.randomimage.com",
                 "caption": "This is where you finish the tour! Go eat some ramen now.",
-                "tourId": "5ba3db212f197961c9a0b1a9"
+                "tourid": "5ba41606204d597729298739"
             }
         ],
         "__v": 0
     },
     {
         "_id": {
-            "$oid": "5ba3db212f197961c9a0b1af"
+            "$oid": "5ba41606204d59772929873f"
         },
         "name": "Portland jogging",
         "description": "A great jogging route that ends at a nice fountain",
-        "userId": {
-            "$oid": "5ba3db212f197961c9a0b1a6"
+        "userid": {
+            "$oid": "5ba41606204d597729298736"
         },
-        "city": "Portland, OR",
-        "tourImage": "www.stock-image.image",
+        "city": "Seattle",
+        "tourimage": "www.stock-image.image",
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1b1"
+                    "$oid": "5ba41606204d597729298741"
                 },
                 "address": "1401 SW Naito Pkwy, Portland, OR 97201",
                 "picture": "https://www.randomimage.com",
                 "caption": "Start jogging here!",
-                "tourId": "5ba3db212f197961c9a0b1ad"
+                "tourid": "5ba41606204d59772929873d"
             },
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1b0"
+                    "$oid": "5ba41606204d597729298740"
                 },
                 "address": "1000 SW Naito Pkwy, Portland, OR 97204",
                 "picture": "https://www.randomimage.com",
                 "caption": "End jogging here! Now you can cool off in the fountain.",
-                "tourId": "5ba3db212f197961c9a0b1ae"
+                "tourid": "5ba41606204d59772929873e"
             }
         ],
         "__v": 0

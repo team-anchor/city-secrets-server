@@ -10,7 +10,9 @@ const makeSimple = tour => {
         name: tour.name,
         stops: tour.stops,
         description: tour.description,
-        userId: tour.userId
+        userid: tour.userid,
+        city: tour.city,
+        tourimage: tour.tourimage
     };
     return simple;
 };
@@ -47,21 +49,21 @@ describe('Tours API', () => {
             .send({
                 name: 'SE Murals',
                 description: 'The best murals in SE PDX',
-                city: 'Portland, OR',
-                tourImage: 'www.stock-image.image',
-                userId: user.id,
+                city: 'Portland',
+                tourimage: 'www.stock-image.image',
+                userid: user.id,
                 stops: [
                     {
                         address: '1300 SE Stark St, Portland, OR 97214',
                         picture: 'https://www.randomimage.com',
                         caption: 'This is where you start the tour! Rev Hall is dope.',
-                        tourId: Types.ObjectId()
+                        tourid: Types.ObjectId()
                     },
                     {
                         address: '923 SE 7th Ave, Portland, OR 97214',
                         picture: 'https://www.randomimage.com',
                         caption: 'This is where you finish the tour! Go eat some ramen now.',
-                        tourId: Types.ObjectId()
+                        tourid: Types.ObjectId()
                     }
                 ]
             })
@@ -76,21 +78,21 @@ describe('Tours API', () => {
             .send({
                 name: 'SW Jogging',
                 description: 'A great jogging route that ends at a nice fountain',
-                userId: user.id,
-                city: 'Portland, OR',
-                tourImage: 'www.stock-image.image',
+                userid: user.id,
+                city: 'Seattle',
+                tourimage: 'www.stock-image.image',
                 stops: [
                     {
                         address: '1401 SW Naito Pkwy, Portland, OR 97201',
                         picture: 'https://www.randomimage.com',
                         caption: 'Start jogging here!',
-                        tourId: Types.ObjectId()
+                        tourid: Types.ObjectId()
                     },
                     {
                         address: '1000 SW Naito Pkwy, Portland, OR 97204',
                         picture: 'https://www.randomimage.com',
                         caption: 'End jogging here! Now you can cool off in the fountain.',
-                        tourId: Types.ObjectId()
+                        tourid: Types.ObjectId()
                     }
                 ]
             })
