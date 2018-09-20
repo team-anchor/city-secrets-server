@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-// const { Types } = require('mongoose');
+const { Types } = require('mongoose');
 const tokenService = require('../../lib/auth/token-service');
 const { request, checkOk } = require('./request');
 const { dropCollection } = require('./db');
@@ -24,7 +24,7 @@ const guide = {
     password: 'abc'
 };
 
-describe('Tours API', () => {
+describe.only('Tours API', () => {
     beforeEach(() => dropCollection('tours'));
     beforeEach(() => dropCollection('auths'));
 
@@ -53,14 +53,16 @@ describe('Tours API', () => {
                         location: {
                             address: '1300 SE Stark St, Portland, OR 97214',
                             picture: 'https://www.randomimage.com',
-                            caption: 'This is where you start the tour! Rev Hall is dope.'
+                            caption: 'This is where you start the tour! Rev Hall is dope.',
+                            tourId: Types.ObjectId()
                         }
                     },
                     {
                         location: {
                             address: '923 SE 7th Ave, Portland, OR 97214',
                             picture: 'https://www.randomimage.com',
-                            caption: 'This is where you finish the tour! Go eat some ramen now.'
+                            caption: 'This is where you finish the tour! Go eat some ramen now.',
+                            tourId: Types.ObjectId()
                         }
                     }
                 ]
@@ -82,14 +84,16 @@ describe('Tours API', () => {
                         location: {
                             address: '1401 SW Naito Pkwy, Portland, OR 97201',
                             picture: 'https://www.randomimage.com',
-                            caption: 'Start jogging here!'
+                            caption: 'Start jogging here!',
+                            tourId: Types.ObjectId()
                         }
                     },
                     {
                         location: {
                             address: '1000 SW Naito Pkwy, Portland, OR 97204',
                             picture: 'https://www.randomimage.com',
-                            caption: 'End jogging here! Now you can cool off in the fountain.'
+                            caption: 'End jogging here! Now you can cool off in the fountain.',
+                            tourId: Types.ObjectId()
                         }
                     }
                 ]
