@@ -12,14 +12,14 @@ describe('Tour model', () => {
                 {
                     location: {
                         address: '1300 SE Stark St, Portland OR, 97214',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'http://www.worldwidewalrusweb.com/bc2/max_2.jpg',
                         caption: 'This is where you start the tour!'
                     }
                 },
                 {
                     location: {
                         address: '923 SE 7th Ave, Portland OR 97214',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'http://www.worldwidewalrusweb.com/bc2/europe_2.jpg',
                         caption: 'This is where you finish the tour!'
                     }
                 }

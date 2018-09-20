@@ -1,4 +1,4 @@
-{
+[{
   "_id" : "5ba1344b54882ac6d0142762",
   "title" : "Flower Gardens",
   "description" : "Here are some very nice flower gardens within easy walking distance of the center of downtown",
@@ -6,7 +6,7 @@
   "images" : [],
   "location" : "Portland",
   "User_Id" : "5ba1312d54882ac6d0138f29"
-}
+},
 {
   "_id" : "5ba1344b54882ac6d0142763",
   "title" : "Wall Murals",
@@ -15,7 +15,7 @@
   "images" : [],
   "location" : "Portland",
   "User_Id" : "5ba1312d54882ac6d0138f29"
-}
+},
 {
   "_id" : "5ba1344b54882ac6d0142764",
   "title" : "Food Carts",
@@ -24,7 +24,7 @@
   "images" : [],
   "location" : "Portland",
   "User_Id" : "5ba1312d54882ac6d0138f30"
-}
+},
 {
   "_id" : "5ba1344b54882ac6d0142765",
   "title" : "Street Chess",
@@ -33,7 +33,7 @@
   "images" : [],
   "location" : "New York",
   "User_Id" : "5ba1312d54882ac6d0138f32"
-}
+},
 {
   "_id" : "5ba1344b54882ac6d0142766",
   "title" : "Hidden Lighthouse",
@@ -42,7 +42,7 @@
   "images" : [],
   "location" : "New York",
   "User_Id" : "5ba1312d54882ac6d0138f32"
-}
+},
 {
   "_id" : "5ba1344b54882ac6d0142767",
   "title" : "Secret Statues",
@@ -52,3 +52,4 @@
   "location" : "Portland",
   "User_Id" : "5ba1312d54882ac6d0138f30"
 }
+]
