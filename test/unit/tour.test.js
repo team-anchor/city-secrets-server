@@ -10,18 +10,14 @@ describe('Tour model', () => {
             userId: Types.ObjectId(),
             stops: [
                 {
-                    location: {
-                        address: '1300 SE Stark St, Portland OR, 97214',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'This is where you start the tour!'
-                    }
+                    address: '1300 SE Stark St, Portland OR, 97214',
+                    picture: 'https://www.randomimage.com',
+                    caption: 'This is where you start the tour!'
                 },
                 {
-                    location: {
-                        address: '923 SE 7th Ave, Portland OR 97214',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'This is where you finish the tour!'
-                    }
+                    address: '923 SE 7th Ave, Portland OR 97214',
+                    picture: 'https://www.randomimage.com',
+                    caption: 'This is where you finish the tour!'
                 }
             ]
         };
