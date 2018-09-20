@@ -10,7 +10,7 @@ describe('User model', () => {
             location: 'Portland',
             favorites: [
                 {
-                    tourId: Types.ObjectId()
+                    tourid: Types.ObjectId()
                 }
             ]
         };

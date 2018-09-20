@@ -7,7 +7,9 @@ describe('Tour model', () => {
         const data = {
             name: 'SE Murals',
             description: 'The best murals in SE PDX',
-            userId: Types.ObjectId(),
+            city: 'Portland',
+            tourimage: 'www.stockimage.com',
+            userid: Types.ObjectId(),
             stops: [
                 {
                     address: '1300 SE Stark St, Portland OR, 97214',
