@@ -51,14 +51,14 @@ describe('Tours API', () => {
                     {
                         location: {
                             address: '1300 SE Stark St, Portland, OR 97214',
-                            picture: 'https://www.randomimage.com',
+                            picture: 'http://www.worldwidewalrusweb.com/bc2/max_2.jpg',
                             caption: 'This is where you start the tour! Rev Hall is dope.'
                         }
                     },
                     {
                         location: {
                             address: '923 SE 7th Ave, Portland, OR 97214',
-                            picture: 'https://www.randomimage.com',
+                            picture: 'http://www.worldwidewalrusweb.com/bc2/europe_2.jpg',
                             caption: 'This is where you finish the tour! Go eat some ramen now.'
                         }
                     }
@@ -80,14 +80,14 @@ describe('Tours API', () => {
                     {
                         location: {
                             address: '1401 SW Naito Pkwy, Portland, OR 97201',
-                            picture: 'https://www.randomimage.com',
+                            picture: '"http://www.worldwidewalrusweb.com/bc2/europe_1.jpg',
                             caption: 'Start jogging here!'
                         }
                     },
                     {
                         location: {
                             address: '1000 SW Naito Pkwy, Portland, OR 97204',
-                            picture: 'https://www.randomimage.com',
+                            picture: 'http://www.worldwidewalrusweb.com/bc2/europe_2.jpg',
                             caption: 'End jogging here! Now you can cool off in the fountain.'
                         }
                     }
