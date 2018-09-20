@@ -8,6 +8,7 @@ const makeSimple = tour => {
     const simple = {
         _id: tour._id,
         name: tour.name,
+        stops: tour.stops,
         description: tour.description,
         userId: tour.userId
     };
