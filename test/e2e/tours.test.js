@@ -50,18 +50,18 @@ describe('Tours API', () => {
                 name: 'SE Murals',
                 description: 'The best murals in SE PDX',
                 city: 'Portland',
-                tourimage: 'www.stock-image.image',
+                tourimage: 'https://picsum.photos/400',
                 userid: user.id,
                 stops: [
                     {
                         address: '1300 SE Stark St, Portland, OR 97214',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'https://picsum.photos/300',
                         caption: 'This is where you start the tour! Rev Hall is dope.',
                         tourid: Types.ObjectId()
                     },
                     {
                         address: '923 SE 7th Ave, Portland, OR 97214',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'https://picsum.photos/300',
                         caption: 'This is where you finish the tour! Go eat some ramen now.',
                         tourid: Types.ObjectId()
                     }
@@ -80,17 +80,17 @@ describe('Tours API', () => {
                 description: 'A great jogging route that ends at a nice fountain',
                 userid: user.id,
                 city: 'Seattle',
-                tourimage: 'www.stock-image.image',
+                tourimage: 'https://picsum.photos/400',
                 stops: [
                     {
                         address: '1401 SW Naito Pkwy, Portland, OR 97201',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'https://picsum.photos/300',
                         caption: 'Start jogging here!',
                         tourid: Types.ObjectId()
                     },
                     {
                         address: '1000 SW Naito Pkwy, Portland, OR 97204',
-                        picture: 'https://www.randomimage.com',
+                        picture: 'https://picsum.photos/300',
                         caption: 'End jogging here! Now you can cool off in the fountain.',
                         tourid: Types.ObjectId()
                     }
