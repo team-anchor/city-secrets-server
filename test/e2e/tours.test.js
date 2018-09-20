@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-// const { Types } = require('mongoose');
+const { Types } = require('mongoose');
 const tokenService = require('../../lib/auth/token-service');
 const { request, checkOk } = require('./request');
 const { dropCollection } = require('./db');
@@ -8,6 +8,7 @@ const makeSimple = tour => {
     const simple = {
         _id: tour._id,
         name: tour.name,
+        stops: tour.stops,
         description: tour.description,
         userId: tour.userId
     };
@@ -49,18 +50,16 @@ describe('Tours API', () => {
                 userId: user.id,
                 stops: [
                     {
-                        location: {
-                            address: '1300 SE Stark St, Portland, OR 97214',
-                            picture: 'http://www.worldwidewalrusweb.com/bc2/max_2.jpg',
-                            caption: 'This is where you start the tour! Rev Hall is dope.'
-                        }
+                        address: '1300 SE Stark St, Portland, OR 97214',
+                        picture: 'https://www.randomimage.com',
+                        caption: 'This is where you start the tour! Rev Hall is dope.',
+                        tourId: Types.ObjectId()
                     },
                     {
-                        location: {
-                            address: '923 SE 7th Ave, Portland, OR 97214',
-                            picture: 'http://www.worldwidewalrusweb.com/bc2/europe_2.jpg',
-                            caption: 'This is where you finish the tour! Go eat some ramen now.'
-                        }
+                        address: '923 SE 7th Ave, Portland, OR 97214',
+                        picture: 'https://www.randomimage.com',
+                        caption: 'This is where you finish the tour! Go eat some ramen now.',
+                        tourId: Types.ObjectId()
                     }
                 ]
             })
@@ -78,18 +77,16 @@ describe('Tours API', () => {
                 userId: user.id,
                 stops: [
                     {
-                        location: {
-                            address: '1401 SW Naito Pkwy, Portland, OR 97201',
-                            picture: '"http://www.worldwidewalrusweb.com/bc2/europe_1.jpg',
-                            caption: 'Start jogging here!'
-                        }
+                        address: '1401 SW Naito Pkwy, Portland, OR 97201',
+                        picture: 'https://www.randomimage.com',
+                        caption: 'Start jogging here!',
+                        tourId: Types.ObjectId()
                     },
                     {
-                        location: {
-                            address: '1000 SW Naito Pkwy, Portland, OR 97204',
-                            picture: 'http://www.worldwidewalrusweb.com/bc2/europe_2.jpg',
-                            caption: 'End jogging here! Now you can cool off in the fountain.'
-                        }
+                        address: '1000 SW Naito Pkwy, Portland, OR 97204',
+                        picture: 'https://www.randomimage.com',
+                        caption: 'End jogging here! Now you can cool off in the fountain.',
+                        tourId: Types.ObjectId()
                     }
                 ]
             })
