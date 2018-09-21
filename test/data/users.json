@@ -1,0 +1,28 @@
+[{
+  "_id" : "5ba1312d54882ac6d0138f29",
+  "email" : "Test@test.com",
+  "name" : "Test Tester",
+  "location" : "Portland",
+  "faves" : []
+},
+{
+  "_id" : "5ba1312d54882ac6d0138f30",
+  "email" : "Example@example.com",
+  "name" : "Testina Testerova",
+  "location" : "Portland",
+  "faves" : []
+},
+{
+  "_id" : "5ba1312d54882ac6d0138f31",
+  "email" : "email@email.com",
+  "name" : "Benedict Q Cumberbatch",
+  "location" : "London",
+  "faves" : []
+},
+{
+  "_id" : "5ba1312d54882ac6d0138f32",
+  "email" : "email@fakedata.com",
+  "name" : "Joseph Bleaux",
+  "location" : "New York",
+  "faves" : []
+}]
