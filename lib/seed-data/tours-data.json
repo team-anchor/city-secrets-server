@@ -3,10 +3,10 @@
         "_id": {
             "$oid": "5ba44054723e3903904363c6"
         },
-        "name": "SE Murals",
-        "description": "The best murals in SE PDX",
+        "name": "Downtown PDX",
+        "description": "Some cool places to visit in downtown Portland",
         "city": "Portland",
-        "tourimage": "https://picsum.photos/400",
+        "tourimage": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556364/if0zbq6bcaxjv7vbrusb.jpg",
         "userid": {
             "$oid": "5ba44054723e3903904363c4"
         },
@@ -15,18 +15,27 @@
                 "_id": {
                     "$oid": "5ba44054723e3903904363c9"
                 },
-                "address": "1300 SE Stark St, Portland, OR 97214",
-                "picture": "https://picsum.photos/800",
-                "caption": "This is where you start the tour! Rev Hall is dope.",
+                "address": "701 SW 6th Ave, Portland, OR 97205",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556364/if0zbq6bcaxjv7vbrusb.jpg",
+                "caption": "Pioneer Courthouse Square is awesome.",
                 "tourid": "5ba44054723e3903904363c6"
             },
             {
                 "_id": {
                     "$oid": "5ba44054723e3903904363ca"
                 },
-                "address": "923 SE 7th Ave, Portland, OR 97214",
-                "picture": "https://picsum.photos/800",
-                "caption": "This is where you finish the tour! Go eat some ramen now.",
+                "address": "724 SW Washington St, Portland, OR 97205",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556412/bxkt3j8uhbbfaaledqk9.jpg",
+                "caption": "Fresh Pot is a great place to get coffee.",
+                "tourid": "5ba44054723e3903904363c6"
+            },
+            {
+                "_id": {
+                    "$oid": "5ba44054723e3903904363ca"
+                },
+                "address": "South Waterfront",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556420/we2twnkqtvsp2pejxadq.jpg",
+                "caption": "South Waterfront is the best!",
                 "tourid": "5ba44054723e3903904363c6"
             }
         ],
@@ -36,21 +45,21 @@
         "_id": {
             "$oid": "5ba44054723e3903904363c7"
         },
-        "name": "SW Jogging",
-        "description": "A great jogging route that ends at a nice fountain",
+        "name": "Forest Park hike",
+        "description": "A great hike in Forest Park",
         "userid": {
             "$oid": "5ba44054723e3903904363c4"
         },
         "city": "Seattle",
-        "tourimage": "https://picsum.photos/300",
+        "tourimage": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556469/zkttn9ep4b69mc8onvgs.jpg",
         "stops": [
             {
                 "_id": {
                     "$oid": "5ba44054723e3903904363cb"
                 },
                 "address": "1401 SW Naito Pkwy, Portland, OR 97201",
-                "picture": "https://picsum.photos/200",
-                "caption": "Start jogging here!",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556475/elonozjs8loikuckdtmb.jpg",
+                "caption": "Start hike here!",
                 "tourid": "5ba44054723e3903904363c7"
             },
             {
@@ -58,42 +67,9 @@
                     "$oid": "5ba44054723e3903904363cc"
                 },
                 "address": "1000 SW Naito Pkwy, Portland, OR 97204",
-                "picture": "https://picsum.photos/200",
-                "caption": "End jogging here! Now you can cool off in the fountain.",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556492/mmbftvqp50bodjia6dfw.jpg",
+                "caption": "End hike here!",
                 "tourid": "5ba44054723e3903904363c7"
-            }
-        ],
-        "__v": 0
-    },
-    {
-        "_id": {
-            "$oid": "5ba44054723e3903904363c8"
-        },
-        "name": "NE bars",
-        "description": "The best bars in NE Portland.",
-        "userid": {
-            "$oid": "5ba44054723e3903904363c4"
-        },
-        "city": "Portland",
-        "tourimage": "https://picsum.photos/500",
-        "stops": [
-            {
-                "_id": {
-                    "$oid": "5ba44054723e3903904363cd"
-                },
-                "address": "1329 NE Fremont St, Portland, OR 97212",
-                "picture": "https://picsum.photos/700",
-                "caption": "The County Cork has great food and even beter drinks.",
-                "tourid": "5ba44054723e3903904363c8"
-            },
-            {
-                "_id": {
-                    "$oid": "5ba44054723e3903904363ce"
-                },
-                "address": "1325 NE Fremont St, Portland, OR 97212",
-                "picture": "https://picsum.photos/700",
-                "caption": "Don't need to go too much farther to get to Free House!",
-                "tourid": "5ba44054723e3903904363c8"
             }
         ],
         "__v": 0

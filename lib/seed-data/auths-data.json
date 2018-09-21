@@ -1,15 +1,15 @@
 [
-    {
-        "_id": {
-            "$oid": "5ba44054723e3903904363c4"
-        },
-        "roles": [],
-        "name": "guide",
-        "email": "guide@test.com",
-        "userid": {
-            "$oid": "5ba44054723e3903904363c5"
-        },
-        "hash": "$2a$08$pRcUpI5GszI85PHNQ/1z6.aCSng9vpANZyT91wr19E5WhCjJf1Mxm",
-        "__v": 0
-    }
+  {
+      "_id": {
+          "$oid": "5ba44054723e3903904363c4"
+      },
+      "roles": [],
+      "name": "guide",
+      "email": "guide@test.com",
+      "userid": {
+          "$oid": "5ba44054723e3903904363c5"
+      },
+      "hash": "$2a$08$pRcUpI5GszI85PHNQ/1z6.aCSng9vpANZyT91wr19E5WhCjJf1Mxm",
+      "__v": 0
+  }
 ]
