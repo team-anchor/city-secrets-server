@@ -1,5 +1,4 @@
 const { assert } = require('chai');
-const { Types } = require('mongoose');
 const tokenService = require('../../lib/auth/token-service');
 const { request, checkOk } = require('./request');
 const { dropCollection } = require('./db');
@@ -10,12 +9,14 @@ const makeSimple = tour => {
         name: tour.name,
         stops: tour.stops,
         description: tour.description,
-        userId: tour.userId
+        userid: tour.userid,
+        city: tour.city,
+        tourimage: tour.tourimage
     };
     return simple;
 };
 
-let muralTour, jogTour;
+let muralTour, jogTour, barTour;
 let token, user;
 
 const guide = {
@@ -26,6 +27,7 @@ const guide = {
 
 describe('Tours API', () => {
     beforeEach(() => dropCollection('tours'));
+    beforeEach(() => dropCollection('users'));
     beforeEach(() => dropCollection('auths'));
 
     beforeEach(() => {
@@ -47,23 +49,56 @@ describe('Tours API', () => {
             .send({
                 name: 'SE Murals',
                 description: 'The best murals in SE PDX',
-                city: 'Portland, OR',
-                tourImage: 'www.stock-image.image',
-                userId: user.id,
-                stops: [
-                    {
-                        address: '1300 SE Stark St, Portland, OR 97214',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'This is where you start the tour! Rev Hall is dope.',
-                        tourId: Types.ObjectId()
-                    },
-                    {
-                        address: '923 SE 7th Ave, Portland, OR 97214',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'This is where you finish the tour! Go eat some ramen now.',
-                        tourId: Types.ObjectId()
-                    }
-                ]
+                city: 'Portland',
+                tourimage: 'https://picsum.photos/400',
+                userid: user.id,
+                stops: []
+            })
+            .then(checkOk)
+            .then(({ body }) => muralTour = body);
+    });
+        
+    beforeEach(() => {
+        return request
+            .post('/api/tours')
+            .set('Authorization', token)
+            .send({
+                name: 'SE Jogging',
+                description: 'A great jogging route that ends at a nice fountain',
+                userid: user.id,
+                city: 'Seattle',
+                tourimage: 'https://picsum.photos/300',
+                stops: []
+            })
+            .then(checkOk)
+            .then(({ body }) => jogTour = body);
+    });
+        
+    beforeEach(() => {
+        return request
+            .post('/api/tours')
+            .set('Authorization', token)
+            .send({
+                name: 'NE bars',
+                description: 'The best bars in NE Portland.',
+                userid: user.id,
+                city: 'Portland',
+                tourimage: 'https://picsum.photos/500',
+                stops: []
+            })
+            .then(checkOk)
+            .then(({ body }) => barTour = body);
+    });
+
+    beforeEach(() => {
+        return request
+            .put(`/api/tours/${muralTour._id}/stops`)
+            .set('Authorization', token)
+            .send({
+                address: '1300 SE Stark St, Portland, OR 97214',
+                picture: 'https://picsum.photos/800',
+                caption: 'This is where you start the tour! Rev Hall is dope.',
+                tourid: muralTour._id
             })
             .then(checkOk)
             .then(({ body }) => muralTour = body);
@@ -71,36 +106,78 @@ describe('Tours API', () => {
 
     beforeEach(() => {
         return request
-            .post('/api/tours')
+            .put(`/api/tours/${muralTour._id}/stops`)
             .set('Authorization', token)
             .send({
-                name: 'SW Jogging',
-                description: 'A great jogging route that ends at a nice fountain',
-                userId: user.id,
-                city: 'Portland, OR',
-                tourImage: 'www.stock-image.image',
-                stops: [
-                    {
-                        address: '1401 SW Naito Pkwy, Portland, OR 97201',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'Start jogging here!',
-                        tourId: Types.ObjectId()
-                    },
-                    {
-                        address: '1000 SW Naito Pkwy, Portland, OR 97204',
-                        picture: 'https://www.randomimage.com',
-                        caption: 'End jogging here! Now you can cool off in the fountain.',
-                        tourId: Types.ObjectId()
-                    }
-                ]
+                address: '923 SE 7th Ave, Portland, OR 97214',
+                picture: 'https://picsum.photos/800',
+                caption: 'This is where you finish the tour! Go eat some ramen now.',
+                tourid: muralTour._id
+            })
+            .then(checkOk)
+            .then(({ body }) => muralTour = body);
+    });
+
+    beforeEach(() => {
+        return request
+            .put(`/api/tours/${jogTour._id}/stops`)
+            .set('Authorization', token)
+            .send({
+                address: '1401 SW Naito Pkwy, Portland, OR 97201',
+                picture: 'https://picsum.photos/200',
+                caption: 'Start jogging here!',
+                tourid: jogTour._id
             })
             .then(checkOk)
             .then(({ body }) => jogTour = body);
     });
 
+    beforeEach(() => {
+        return request
+            .put(`/api/tours/${jogTour._id}/stops`)
+            .set('Authorization', token)
+            .send({
+                address: '1000 SW Naito Pkwy, Portland, OR 97204',
+                picture: 'https://picsum.photos/200',
+                caption: 'End jogging here! Now you can cool off in the fountain.',
+                tourid: jogTour._id
+            })
+            .then(checkOk)
+            .then(({ body }) => jogTour = body);
+    });
+
+    beforeEach(() => {
+        return request
+            .put(`/api/tours/${barTour._id}/stops`)
+            .set('Authorization', token)
+            .send({
+                address: '1329 NE Fremont St, Portland, OR 97212',
+                picture: 'https://picsum.photos/700',
+                caption: 'The County Cork has great food and even beter drinks.',
+                tourid: barTour._id
+            })
+            .then(checkOk)
+            .then(({ body }) => barTour = body);
+    });
+
+    beforeEach(() => {
+        return request
+            .put(`/api/tours/${barTour._id}/stops`)
+            .set('Authorization', token)
+            .send({
+                address: '1325 NE Fremont St, Portland, OR 97212',
+                picture: 'https://picsum.photos/700',
+                caption: 'Don\'t need to go too much farther to get to Free House!',
+                tourid: barTour._id
+            })
+            .then(checkOk)
+            .then(({ body }) => barTour = body);
+    });
+    
     it('saves a tour to the database', () => {
         assert.isOk(muralTour._id);
         assert.isOk(jogTour._id);
+        assert.isOk(barTour._id);
     });
 
     it('gets all tours from the database', () => {
@@ -108,7 +185,7 @@ describe('Tours API', () => {
             .get('/api/tours')
             .set('Authorization', token)
             .then(({ body }) => {
-                assert.deepEqual(body, [makeSimple(muralTour), makeSimple(jogTour)]);
+                assert.deepEqual(body, [makeSimple(muralTour), makeSimple(jogTour), makeSimple(barTour)]);
             });
     });
 
@@ -124,14 +201,14 @@ describe('Tours API', () => {
     });
 
     it('updates a tour by id', () => {
-        jogTour.name = 'Portland jogging';
+        jogTour.name = 'SW Jogging';
         return request
             .put(`/api/tours/${jogTour._id}`)
             .set('Authorization', token)
             .send(jogTour)
             .then(checkOk)
             .then(({ body }) => {
-                assert.equal(body.name, 'Portland jogging');
+                assert.equal(body.name, 'SW Jogging');
             });
     });
 
@@ -147,7 +224,7 @@ describe('Tours API', () => {
                     .set('Authorization', token)
                     .then(({ body }) => {
                         delete jogTour.__v;
-                        assert.equal(body.length, 1);
+                        assert.equal(body.length, 2);
                         assert.deepEqual(body[0], makeSimple(jogTour));
                     });
             });
