@@ -14,7 +14,15 @@
     "test:unit:watch": "nodemon --exec 'npm run -s test:unit'",
     "test:e2e:watch": "nodemon --exec 'npm run -s test:e2e'",
     "start": "node server.js",
-    "start:watch": "nodemon server.js"
+    "start:watch": "nodemon server.js",
+    "db:load:tours": "mongoimport --drop -d citysecrets -c tours --jsonArray --file ./lib/seed-data/tours-data.json",
+    "db:load:users": "mongoimport --drop -d citysecrets -c users --jsonArray --file ./lib/seed-data/users-data.json",
+    "db:load:auths": "mongoimport --drop -d citysecrets -c auths --jsonArray --file ./lib/seed-data/auths-data.json",
+    "db:load:all": "npm run db:load:tours && npm run db:load:auths && npm run db:load:users",
+    "db:load-auths-heroku": "mongoimport -h ds259732.mlab.com:59732 -d heroku_n7b85gb0 -c auths -u heroku_n7b85gb0 -p c1e880r8bf7ltsat5l6oa1o7aq --jsonArray --drop --file ./lib/seed-data/auths-data.json",
+    "db:load-users-heroku": "mongoimport -h ds259732.mlab.com:59732 -d heroku_n7b85gb0 -c users -u heroku_n7b85gb0 -p c1e880r8bf7ltsat5l6oa1o7aq --jsonArray --drop --file ./lib/seed-data/users-data.json",
+    "db:load-tours-heroku": "mongoimport -h ds259732.mlab.com:59732 -d heroku_n7b85gb0 -c tours -u heroku_n7b85gb0 -p c1e880r8bf7ltsat5l6oa1o7aq --jsonArray --drop --file ./lib/seed-data/tours-data.json",
+    "db:load-all-heroku": "npm run db:load-auths-heroku && npm run db:load-users-heroku && npm run db:load-tours-heroku"
   },
   "repository": {
     "type": "git",

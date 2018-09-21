@@ -1,66 +1,75 @@
 [
     {
         "_id": {
-            "$oid": "5ba3db212f197961c9a0b1aa"
+            "$oid": "5ba44054723e3903904363c6"
         },
-        "name": "SE Murals",
-        "description": "The best murals in SE PDX",
-        "city": "Portland, OR",
-        "tourImage": "www.stock-image.image",
-        "userId": {
-            "$oid": "5ba3db212f197961c9a0b1a6"
+        "name": "Downtown PDX",
+        "description": "Some cool places to visit in downtown Portland",
+        "city": "Portland",
+        "tourimage": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556364/if0zbq6bcaxjv7vbrusb.jpg",
+        "userid": {
+            "$oid": "5ba44054723e3903904363c4"
         },
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1ac"
+                    "$oid": "5ba44054723e3903904363c9"
                 },
-                "address": "1300 SE Stark St, Portland, OR 97214",
-                "picture": "https://www.randomimage.com",
-                "caption": "This is where you start the tour! Rev Hall is dope.",
-                "tourId": "5ba3db212f197961c9a0b1a8"
+                "address": "701 SW 6th Ave, Portland, OR 97205",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556364/if0zbq6bcaxjv7vbrusb.jpg",
+                "caption": "Pioneer Courthouse Square is awesome.",
+                "tourid": "5ba44054723e3903904363c6"
             },
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1ab"
+                    "$oid": "5ba44054723e3903904363ca"
                 },
-                "address": "923 SE 7th Ave, Portland, OR 97214",
-                "picture": "https://www.randomimage.com",
-                "caption": "This is where you finish the tour! Go eat some ramen now.",
-                "tourId": "5ba3db212f197961c9a0b1a9"
+                "address": "724 SW Washington St, Portland, OR 97205",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556412/bxkt3j8uhbbfaaledqk9.jpg",
+                "caption": "Fresh Pot is a great place to get coffee.",
+                "tourid": "5ba44054723e3903904363c6"
+            },
+            {
+                "_id": {
+                    "$oid": "5ba44054723e3903904363ca"
+                },
+                "address": "South Waterfront",
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556420/we2twnkqtvsp2pejxadq.jpg",
+                "caption": "South Waterfront is the best!",
+                "tourid": "5ba44054723e3903904363c6"
             }
         ],
         "__v": 0
     },
     {
         "_id": {
-            "$oid": "5ba3db212f197961c9a0b1af"
+            "$oid": "5ba44054723e3903904363c7"
         },
-        "name": "Portland jogging",
-        "description": "A great jogging route that ends at a nice fountain",
-        "userId": {
-            "$oid": "5ba3db212f197961c9a0b1a6"
+        "name": "Forest Park hike",
+        "description": "A great hike in Forest Park",
+        "userid": {
+            "$oid": "5ba44054723e3903904363c4"
         },
-        "city": "Portland, OR",
-        "tourImage": "www.stock-image.image",
+        "city": "Seattle",
+        "tourimage": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556469/zkttn9ep4b69mc8onvgs.jpg",
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1b1"
+                    "$oid": "5ba44054723e3903904363cb"
                 },
                 "address": "1401 SW Naito Pkwy, Portland, OR 97201",
-                "picture": "https://www.randomimage.com",
-                "caption": "Start jogging here!",
-                "tourId": "5ba3db212f197961c9a0b1ad"
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556475/elonozjs8loikuckdtmb.jpg",
+                "caption": "Start hike here!",
+                "tourid": "5ba44054723e3903904363c7"
             },
             {
                 "_id": {
-                    "$oid": "5ba3db212f197961c9a0b1b0"
+                    "$oid": "5ba44054723e3903904363cc"
                 },
                 "address": "1000 SW Naito Pkwy, Portland, OR 97204",
-                "picture": "https://www.randomimage.com",
-                "caption": "End jogging here! Now you can cool off in the fountain.",
-                "tourId": "5ba3db212f197961c9a0b1ae"
+                "picture": "https://res.cloudinary.com/dkbja8aak/image/upload/v1537556492/mmbftvqp50bodjia6dfw.jpg",
+                "caption": "End hike here!",
+                "tourid": "5ba44054723e3903904363c7"
             }
         ],
         "__v": 0
