@@ -38,12 +38,22 @@ const saveAuth = data => {
         .then(({ body }) => body);
 };
 
+const updateStops = (id, data, token) => {
+    return request
+        .put(`/api/tours/${id}/stops`)
+        .set('Authorization', token)
+        .send(data, id)
+        .then(checkOk)
+        .then(({ body }) => body);
+};
+
 after(done => server.close(done));
 
 module.exports = {
     request,
     save,
     saveAuth,
+    updateStops,
     checkOk,
     getToken
 };

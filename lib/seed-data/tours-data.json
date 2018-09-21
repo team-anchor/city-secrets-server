@@ -1,66 +1,99 @@
 [
     {
         "_id": {
-            "$oid": "5ba41606204d59772929873a"
+            "$oid": "5ba44054723e3903904363c6"
         },
         "name": "SE Murals",
         "description": "The best murals in SE PDX",
         "city": "Portland",
-        "tourimage": "www.stock-image.image",
+        "tourimage": "https://picsum.photos/400",
         "userid": {
-            "$oid": "5ba41606204d597729298736"
+            "$oid": "5ba44054723e3903904363c4"
         },
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba41606204d59772929873c"
+                    "$oid": "5ba44054723e3903904363c9"
                 },
                 "address": "1300 SE Stark St, Portland, OR 97214",
-                "picture": "https://www.randomimage.com",
+                "picture": "https://picsum.photos/800",
                 "caption": "This is where you start the tour! Rev Hall is dope.",
-                "tourid": "5ba41606204d597729298738"
+                "tourid": "5ba44054723e3903904363c6"
             },
             {
                 "_id": {
-                    "$oid": "5ba41606204d59772929873b"
+                    "$oid": "5ba44054723e3903904363ca"
                 },
                 "address": "923 SE 7th Ave, Portland, OR 97214",
-                "picture": "https://www.randomimage.com",
+                "picture": "https://picsum.photos/800",
                 "caption": "This is where you finish the tour! Go eat some ramen now.",
-                "tourid": "5ba41606204d597729298739"
+                "tourid": "5ba44054723e3903904363c6"
             }
         ],
         "__v": 0
     },
     {
         "_id": {
-            "$oid": "5ba41606204d59772929873f"
+            "$oid": "5ba44054723e3903904363c7"
         },
-        "name": "Portland jogging",
+        "name": "SW Jogging",
         "description": "A great jogging route that ends at a nice fountain",
         "userid": {
-            "$oid": "5ba41606204d597729298736"
+            "$oid": "5ba44054723e3903904363c4"
         },
         "city": "Seattle",
-        "tourimage": "www.stock-image.image",
+        "tourimage": "https://picsum.photos/300",
         "stops": [
             {
                 "_id": {
-                    "$oid": "5ba41606204d597729298741"
+                    "$oid": "5ba44054723e3903904363cb"
                 },
                 "address": "1401 SW Naito Pkwy, Portland, OR 97201",
-                "picture": "https://www.randomimage.com",
+                "picture": "https://picsum.photos/200",
                 "caption": "Start jogging here!",
-                "tourid": "5ba41606204d59772929873d"
+                "tourid": "5ba44054723e3903904363c7"
             },
             {
                 "_id": {
-                    "$oid": "5ba41606204d597729298740"
+                    "$oid": "5ba44054723e3903904363cc"
                 },
                 "address": "1000 SW Naito Pkwy, Portland, OR 97204",
-                "picture": "https://www.randomimage.com",
+                "picture": "https://picsum.photos/200",
                 "caption": "End jogging here! Now you can cool off in the fountain.",
-                "tourid": "5ba41606204d59772929873e"
+                "tourid": "5ba44054723e3903904363c7"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5ba44054723e3903904363c8"
+        },
+        "name": "NE bars",
+        "description": "The best bars in NE Portland.",
+        "userid": {
+            "$oid": "5ba44054723e3903904363c4"
+        },
+        "city": "Portland",
+        "tourimage": "https://picsum.photos/500",
+        "stops": [
+            {
+                "_id": {
+                    "$oid": "5ba44054723e3903904363cd"
+                },
+                "address": "1329 NE Fremont St, Portland, OR 97212",
+                "picture": "https://picsum.photos/700",
+                "caption": "The County Cork has great food and even beter drinks.",
+                "tourid": "5ba44054723e3903904363c8"
+            },
+            {
+                "_id": {
+                    "$oid": "5ba44054723e3903904363ce"
+                },
+                "address": "1325 NE Fremont St, Portland, OR 97212",
+                "picture": "https://picsum.photos/700",
+                "caption": "Don't need to go too much farther to get to Free House!",
+                "tourid": "5ba44054723e3903904363c8"
             }
         ],
         "__v": 0
