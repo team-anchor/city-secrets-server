@@ -6,7 +6,7 @@ CitySecrets is a photo-driven web app for exploring little-known features of cit
 ## Get Started
 1. Fork and clone the repo.
 1. Run `npm i` inside the directory to install all the necessary packages.
-1. Make your own .env with the correct MongoDB URI, PORT, and APP_SECRET. Look at the .env.example file as a guide.
+1. Make your own `.env` with the correct MongoDB URI, PORT, and APP_SECRET. Look at the `.env.example` file as a guide.
 1. In a new terminal window, run your Mongo server.
 1. Run `npm start` to start the server.
 1. Run `npm run test:watch` to run the tests and build the necessary collections in your MongoDB.
